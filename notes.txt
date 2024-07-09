@@ -1,0 +1,11 @@
+1. Create Dockerfile, build and push to DockerHub
+    docker build -t gmaceu/kube-news:v1 --push .
+
+2. Create cluster
+    k3d cluster create kube-news --servers 1 --agents 2 -p "8080:30000@loadbalancer"
+
+3. Create db yaml manifests (Container and Service) and test with dbeaver
+    kubectl port-forward service/postgresql 5432:5432
+
+4. Append kubenews manifest with db file and apply
+
